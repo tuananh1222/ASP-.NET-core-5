@@ -36,24 +36,24 @@ namespace WebApi
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.Use(async (context, next) =>
-            {
-                await context.Response.WriteAsync("Start Asysc \n");
-                await next();
-                await context.Response.WriteAsync("End Asysc \n");
-            });
-            app.Map("/custom", CustomMidel);
-            app.Use(async (context, next) =>
-            {
-                await context.Response.WriteAsync("Start Asysc 1\n");
-                await next();
-                await context.Response.WriteAsync("End Asysc 1\n");
-            });
-            app.UseMiddleware<MyCostomMidelware>();
-            app.Run(async context =>
-            {
-                await context.Response.WriteAsync("Response from Run Middleware \n");
-            });
+            //app.Use(async (context, next) =>
+            //{
+            //    await context.Response.WriteAsync("Start Asysc \n");
+            //    await next();
+            //    await context.Response.WriteAsync("End Asysc \n");
+            //});
+            //app.Map("/custom", CustomMidel);
+            //app.Use(async (context, next) =>
+            //{
+            //    await context.Response.WriteAsync("Start Asysc 1\n");
+            //    await next();
+            //    await context.Response.WriteAsync("End Asysc 1\n");
+            //});
+            //app.UseMiddleware<MyCostomMidelware>();
+            //app.Run(async context =>
+            //{
+            //    await context.Response.WriteAsync("Response from Run Middleware \n");
+            //});
 
             if (env.IsDevelopment())
             {
