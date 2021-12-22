@@ -1,13 +1,11 @@
-﻿namespace WebApi.Models
+﻿using Microsoft.AspNetCore.Mvc;
+
+namespace WebApi.Models
 {
+    [ModelBinder(typeof(CustomModelDetail))]
     public class TodoItem
     {
-        public TodoItem()
-        {
-            Id = 1;
-            Name = "Le Tuan Anh";
-            IsComplete = true;
-        }
+       
 
         public long Id { get; set; }
         public string Name { get; set; }

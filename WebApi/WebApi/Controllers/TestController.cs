@@ -19,11 +19,11 @@ namespace WebApi.Controllers
             return "My name is Tuan ANh";
         }
 
-        [Route("{Department:int}")]
-        public string Search(string Department)
-        {
-            return $"Return Employees with Department : {Department}";
-        }
+        //[Route("{Department:int}")]
+        //public string Search(string Department)
+        //{
+        //    return $"Return Employees with Department : {Department}";
+        //}
         //[Route("{EmployeeId:int}")]
         //public string GetEmployeeDetails(int EmployeeId)
         //{
@@ -110,8 +110,18 @@ namespace WebApi.Controllers
             }
             else
             {
-                return new TodoItem { Id = 4, Name = "Le Tuan Anh", IsComplete = true, };
+                return new TodoItem { Id = 4, Name = "Le Tuan Anh", IsComplete = true};
             }
+        }
+        [HttpGet("search")]
+        public IActionResult SearchCountries([ModelBinder(typeof(CustomModelBinder))] string[] todoitem)
+        {
+            return Ok(todoitem);
+        }
+        [HttpGet("{Id}")]
+        public IActionResult DetailCountries([ModelBinder(Name = "Id")] TodoItem todo)
+        {
+            return Ok(todo);
         }
     }
 }
